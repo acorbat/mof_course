@@ -11,11 +11,11 @@
 
 ### Extracción del Perfil de Intensidad
 
-Comencemos por la imagen correspondiente a la magnificacion de 60x y NA de 0.65. Realizemos los siguientes pasos en FIJI:
+Comencemos por la imagen correspondiente a la magnificación de 60x y NA de 0.65. Realizemos los siguientes pasos en FIJI:
 
 1. **Abre la imagen:** Arrastra el archivo al panel principal de FIJI o ve a `File > Open...`
 2. **Selecciona la herramienta de línea:** En la barra de herramientas, haz clic en *Straight Line*.
-3. **Traza la línea de medición:** Haz zoom sobre un grupo de filamentos de actina que se encuentrenseparados entre si. Dibuja una línea perpendicular que los cruce, abarcando un poco de fondo a cada lado.
+3. **Traza la línea de medición:** Haz zoom sobre un grupo de filamentos de actina que se encuentren separados entre si. Dibuja una línea perpendicular que los cruce, abarcando un poco de fondo a cada lado.
 
 > **💡 Pro-Tip para mejorar la estimación:**
 > Cuando trazas una línea diagonal, los píxeles no se alinean perfectamente con tu trazo, lo que obliga a FIJI a **interpolar** los valores de intensidad. Para obtener la medición más pura y exacta, busca unos filamentos que estén orientados vertical u horizontalmente y **dibuja tu línea de corte perfectamente paralela al eje X o al eje Y** (puedes mantener presionada la tecla `Shift` mientras dibujas para forzar la línea a 0°, 90°, etc.). De esta forma, FIJI leerá los valores crudos de los píxeles sin necesidad de interpolar.
@@ -59,12 +59,6 @@ Responde a las siguientes preguntas basándote en los datos recolectados:
 2. **Comparación A vs. B:** Ambas imágenes tienen aumentos diferentes, pero la Imagen B tiene una apertura numérica mucho mayor. ¿Cuál filamento se mide más "delgado" o definido en tus perfiles de intensidad?
 
 #### Conclusión Clave
-Un filamento de actina real mide aproximadamente **7 nm** de diámetro. Sin embargo, tus mediciones seguramente oscilan entre **100 nm y 400 nm**. Esto ocurre debido al límite de difracción de la luz, descrito por la ecuación de Abbe: 
-
-$$d = \frac{\lambda}{2 \cdot NA}$$
-
-Donde $d$ es la resolución, $\lambda$ es la longitud de onda de emisión de la fluorescencia, y $NA$ es la Apertura Numérica del objetivo. 
-
-Como el filamento es mucho más pequeño que el límite físico $d$, lo que estás midiendo en realidad no es el grosor biológico de la actina, sino la respuesta del propio sistema óptico frente a un punto luminoso (su *Point Spread Function* o PSF). 
+Un filamento de actina real mide aproximadamente **7 nm** de diámetro. Sin embargo, tus mediciones seguramente oscilan entre **100 nm y 400 nm**. Como el filamento es mucho más pequeño que el límite de difracción de la luz, lo que estás midiendo en realidad no es el grosor biológico de la actina, sino la respuesta del propio sistema óptico frente a un punto luminoso (su *Point Spread Function* o PSF). 
 
 Por lo tanto, debes concluir que **el ancho detectado de una estructura sub-resolutiva depende exclusivamente de la Apertura Numérica (NA) del objetivo, y no de su magnificación.** Aumentar la "magnificacion" (por ejemplo pasar de 40x a 60x manteniendo el mismo NA de 0.6) solo hace que la mancha borrosa se distribuya en más píxeles de la cámara, pero no mejora la resolución ni hace que el filamento se detecte más estrecho.
