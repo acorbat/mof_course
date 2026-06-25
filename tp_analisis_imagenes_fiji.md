@@ -55,24 +55,22 @@
 
 Utilizando cualquier imagen monocromática, exploraremos cómo alterar la matriz de datos.
 
-1. **Máscara y Umbralización:** Ve a `Image > Adjust > Threshold...` y genera una máscara binaria. Haz clic en *Apply*.
-2. **Aritmética de Escalares:** Carga de nuevo la imagen original. Ve a `Process > Math`. Experimenta aplicando operaciones de suma (`Add`), resta (`Subtract`), multiplicación (`Multiply`) y división (`Divide`) por un valor escalar constante. Observa cómo cambia la imagen.
-3. **Aritmética entre Imágenes:** Abre dos imágenes distintas (o la imagen original y su máscara). Ve a `Process > Image Calculator...`. Realiza operaciones matemáticas entre ambas matrices de imágenes (ej. sumar una a la otra o multiplicarlas).
-4. **Suavizado (Filtros Espaciales):** Aplica un filtro para difuminar el ruido yendo a `Process > Filters > Gaussian Blur...`.
-5. **Detección de Bordes:** Usa el filtro `Process > Find Edges` para resaltar los gradientes de intensidad de tu imagen.
-6. **Dominio de Frecuencias:** Aplica un filtro espacial avanzado yendo a `Process > FFT > Bandpass Filter...` para retener solo estructuras de un tamaño específico, filtrando el ruido de alta frecuencia y las variaciones de iluminación de baja frecuencia.
+1. **Aritmética de Escalares:** Carga de nuevo la imagen original. Ve a `Process > Math`. Experimenta aplicando operaciones de suma (`Add`), resta (`Subtract`), multiplicación (`Multiply`) y división (`Divide`) por un valor escalar constante. Observa cómo cambia la imagen.
+2. **Aritmética entre Imágenes:** Abre dos imágenes distintas (o la imagen original y su máscara). Ve a `Process > Image Calculator...`. Realiza operaciones matemáticas entre ambas matrices de imágenes (ej. sumar una a la otra o multiplicarlas).
+3. **Suavizado (Filtros Espaciales):** Aplica un filtro para difuminar el ruido yendo a `Process > Filters > Gaussian Blur...`.
+4. **Detección de Bordes:** Usa el filtro `Process > Find Edges` para resaltar los gradientes de intensidad de tu imagen.
 
 ---
 
-### Parte 3: Regiones de Interés (ROIs) y Mediciones
+### Regiones de Interés (ROIs) y Mediciones
 
-1. **Generación de máscara a partir de una ROI:** Utiliza cualquier herramienta de selección (polígono, círculo, mano alzada) para dibujar una ROI. Ve a `Edit > Selection > Create Mask` para generar una imagen binaria basada exclusivamente en tu trazado.
-2. **Uso del ROI Manager:** Ve a `Analyze > Tools > ROI Manager...`. Dibuja varias regiones en tu imagen y presiona la letra `T` en tu teclado (o el botón *Add* en el Manager) para guardarlas en la lista.
-3. **Medición de Propiedades:** En el *ROI Manager*, asegúrate de deseleccionar todas las ROIs de la lista y haz clic en **Measure**. Esto medirá las propiedades (área, intensidad, etc.) de todas tus regiones guardadas simultáneamente sobre la imagen activa.
+1. **Máscara y Umbralización:** Ve a `Image > Adjust > Threshold...` y genera una máscara binaria. Explora los diferentes métodos para determinar el umbral utilizando la estadística de intensidad de píxeles. Haz clic en *Apply*.
+2. **Uso del ROI Manager:** Ve a `Analyze > Analyze Particles...`. Esto nos permitirá crear regiones de interés por cada objeto detectado por separado.
+3. **Medición de Propiedades:** Primero ve al menu de `Analyze > Set Measurements...` y explora las opciones de parámetros a cuantificar. En el *ROI Manager*, asegúrate de deseleccionar todas las ROIs de la lista y haz clic en **Measure**. Esto medirá las propiedades (área, intensidad, etc.) de todas tus regiones guardadas simultáneamente sobre la imagen activa. *Nota: No olvides utilizar la escala calculada previamente mediante `Analyze > Set Scale...`.
 
 ---
 
-### Parte 4: Composición Multicanal (Color)
+### Composición Multicanal (Color)
 
 1. **Carga de canales:** Abre las imágenes individuales que corresponden a los diferentes canales fluorescentes de tu muestra.
 2. **Combinación a color:** Ve a `Image > Color > Merge Channels...`. Asigna el color apropiado a cada imagen (por ejemplo, rojo (C1), verde (C2), azul (C3)) y haz clic en *OK*. Se generará una imagen *Composite*.
@@ -80,7 +78,7 @@ Utilizando cualquier imagen monocromática, exploraremos cómo alterar la matriz
 
 ---
 
-### Parte 5: Preparación de Imágenes para Publicación
+### Preparación de Imágenes para Publicación
 
 Para que una imagen tenga validez científica en una publicación, debe incluir referencias espaciales e información de escala.
 
@@ -88,13 +86,3 @@ Para que una imagen tenga validez científica en una publicación, debe incluir 
 2. **Barra de Escala:** Ve a `Analyze > Tools > Scale Bar...`. Configura el ancho, color y posición de la barra de escala para que sea claramente visible frente al fondo.
 3. **Barra de Calibración:** (Útil para mostrar mapeos de intensidades o LUTs térmicas). Ve a `Analyze > Tools > Calibration Bar...` y ajusta los parámetros.
 4. **Creación de Montaje:** A partir de tu imagen multicanal de la Parte 4, ve a `Image > Stacks > Make Montage...`. Configura las filas y columnas para exportar una figura lista para publicación que muestre cada canal en escala de grises o color por separado, finalizando con la imagen combinada (*Merge*).
-
----
-
-### Parte 6: Discusión y Análisis
-
-Responde a las siguientes preguntas y discútelas con tu docente:
-
-1. **Profundidad de Bits:** ¿Cuáles son las diferencias fundamentales entre una imagen de 8-bits, 16-bits y 32-bits? Si tienes una imagen científica con un rango dinámico muy alto, ¿por qué guardarías tus datos en 16-bits en lugar de 8-bits?
-2. **Alteración vs. Representación:** Tras haber realizado el "Pro-Tip" de la Parte 1, ¿por qué es una mala práctica científica realizar mediciones de intensidad después de haber modificado una imagen usando `Process > Math > Multiply` en lugar de usar el ajuste de `Brightness/Contrast`?
-3. **Matemática de Imágenes:** Cuando multiplicaste la imagen original por la máscara binaria generada en la Parte 2 usando el *Image Calculator*, ¿cuál fue el resultado visual y numérico? ¿Qué utilidad tiene esta operación en el aislamiento de estructuras?
